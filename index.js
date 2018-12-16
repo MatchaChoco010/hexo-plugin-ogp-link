@@ -12,7 +12,7 @@ hexo.extend.filter.register('before_post_render', async data => {
       const url = match[2]
 
       try {
-        const result = ogs({ url, timeout: 4000 })
+        const result = await ogs({ url, timeout: 4000 })
         console.log(result)
 
         if (!result.success) return `\n<a href="${url}">${title}</a>\n`
