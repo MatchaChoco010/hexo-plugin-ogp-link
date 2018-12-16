@@ -1,0 +1,22 @@
+{
+  "name": "hexo-plugin-ogp-link",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MatchaChoco010/hexo-plugin-ogp-link.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatchaChoco010/hexo-plugin-ogp-link/issues"
+  },
+  "homepage": "https://github.com/MatchaChoco010/hexo-plugin-ogp-link#readme",
+  "dependencies": {
+    "open-graph-scraper": "^3.6.0"
+  }
+}
