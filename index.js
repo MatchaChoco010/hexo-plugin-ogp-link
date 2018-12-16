@@ -23,7 +23,8 @@ hexo.extend.filter.register('before_post_render', async data => {
           url}" class="hexo-plugin-ogp-link"><img src=${
           data.ogImage.url
         }><div><h1>${data.ogTitle}</h1><div>{% raw %}${util.truncate(
-          data.ogDescription
+          data.ogDescription,
+          60
         )}{% endraw %}</div></div></a>\n`
       } catch (e) {
         return `\n<a href="${url}">${title}</a>\n`
@@ -36,5 +37,4 @@ hexo.extend.filter.register('before_post_render', async data => {
     content = content.replace(/\n%link-tag%\n/, tag)
   }
   data.content = content
-  console.log(data.content)
 })
