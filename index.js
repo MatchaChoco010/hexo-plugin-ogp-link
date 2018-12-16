@@ -18,11 +18,10 @@ hexo.extend.filter.register('before_post_render', async data => {
 
         const data = result.data
 
-        return `\n<a href="${data.ogUrl}" class="hexo-plugin-ogp-link"><h1>${
-          data.ogTitle
-        }</h1><img src=${data.ogImage.url}><div>${
-          data.ogDescription
-        }</div></a>\n`
+        return `\n<a href="${data.ogUrl ||
+          url}" class="hexo-plugin-ogp-link"><h1>${data.ogTitle}</h1><img src=${
+          data.ogImage.url
+        }><div>${data.ogDescription}</div></a>\n`
       } catch (e) {
         return `\n<a href="${url}">${title}</a>\n`
       }
@@ -34,4 +33,5 @@ hexo.extend.filter.register('before_post_render', async data => {
     content = content.replace(/\n%link-tag%\n/, tag)
   }
   data.content = content
+  console.log(data.content)
 })
