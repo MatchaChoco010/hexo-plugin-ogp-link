@@ -19,9 +19,11 @@ hexo.extend.filter.register('before_post_render', async data => {
         const data = result.data
 
         return `\n<a href="${data.ogUrl ||
-          url}" class="hexo-plugin-ogp-link"><h1>${data.ogTitle}</h1><img src=${
+          url}" class="hexo-plugin-ogp-link"><img src=${
           data.ogImage.url
-        }><div>${data.ogDescription}</div></a>\n`
+        }><div><h1>${data.ogTitle}</h1><div>${
+          data.ogDescription
+        }</div></div></a>\n`
       } catch (e) {
         return `\n<a href="${url}">${title}</a>\n`
       }
