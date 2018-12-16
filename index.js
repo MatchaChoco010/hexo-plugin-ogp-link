@@ -29,8 +29,9 @@ hexo.extend.filter.register('before_post_render', async data => {
     })
   )
 
+  content = content.replace(/\n\[.+\]\(.+\)\n/g, '\n%link-tag%\n')
   for (let tag of linkTags) {
-    content = content.replace(/\n\[.+\]\(.+\)\n/, tag)
+    content = content.replace(/\n%link-tag%\n/, tag)
   }
   data.content = content
 })
