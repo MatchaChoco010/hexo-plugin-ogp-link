@@ -13,14 +13,15 @@ hexo.extend.filter.register('before_post_render', async data => {
 
       try {
         const result = await ogs({ url, timeout: 4000 })
-        console.log(result)
 
         if (!result.success) return `\n<a href="${url}">${title}</a>\n`
 
-        return `\n<a href="${result.ogUrl}" class="ogp-link"><h1>${
-          result.ogTitle
-        }</h1><img src=${result.ogImage.url}><div>${
-          result.ogDescription
+        const data = result.data
+
+        return `\n<a href="${data.ogUrl}" class="ogp-link"><h1>${
+          data.ogTitle
+        }</h1><img src=${data.ogImage.url}><div>${
+          data.ogDescription
         }</div></a>\n`
       } catch (e) {
         return `\n<a href="${url}">${title}</a>\n`
