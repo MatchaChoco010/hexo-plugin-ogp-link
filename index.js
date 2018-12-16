@@ -33,5 +33,4 @@ hexo.extend.filter.register('before_post_render', async data => {
     content = content.replace(/\n\[.+\]\(.+\)\n/, tag)
   }
   data.content = content
-  console.log(data.content)
 })
