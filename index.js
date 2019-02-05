@@ -19,13 +19,22 @@ hexo.extend.filter.register('before_post_render', async data => {
 
         const data = result.data
 
-        return `\n<a href="${data.ogUrl ||
-          url}" class="hexo-plugin-ogp-link"><img src=${
-          data.ogImage.url
-        }><div><h1>${data.ogTitle}</h1><div>{% raw %}${util.truncate(
-          data.ogDescription,
-          60
-        )}{% endraw %}</div></div></a>\n`
+        if (data.ogImage.url && /^https.*/.test(data.ogImage.url)) {
+          return `\n<a href="${data.ogUrl ||
+            url}" class="hexo-plugin-ogp-link"><img src=${
+            data.ogImage.url
+          }><div><h1>${data.ogTitle}</h1><div>{% raw %}${util.truncate(
+            data.ogDescription,
+            60
+          )}{% endraw %}</div></div></a>\n`
+        } else {
+          return `\n<a href="${data.ogUrl ||
+            url}" class="hexo-plugin-ogp-link"><div><h1>${data.ogTitle}</h1><div>{% raw %}${util.truncate(
+            data.ogDescription,
+            60
+          )}{% endraw %}</div></div></a>\n`
+        }
+
       } catch (e) {
         return `\n<a href="${url}">${title}</a>\n`
       }
